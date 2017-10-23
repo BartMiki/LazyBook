@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LazyBook.Views.AddBookPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="titleEntry"
+                   Placeholder="Add title"/>
+            <Entry x:Name="authorEntry"
+                   Placeholder="Add author"/>
+            <Entry x:Name="publisherEntry"
+                   Placeholder="Add publisher"/>
+            <Entry x:Name="yearEntry"
+                   Placeholder="Add the year when the book was published"/>
+            <Picker x:Name="categoriesPicker"/>
+            <Entry x:Name="summaryEntry"
+                   Placeholder="Write down everything you learned from the book"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

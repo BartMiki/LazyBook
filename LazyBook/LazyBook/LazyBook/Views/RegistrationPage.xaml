@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LazyBook.Views.RegistrationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="emailEntry" 
+                   Placeholder="E-mail"/>
+            
+            <Entry x:Name="usernameEntry" 
+                   Placeholder="Username"/>
+            
+            <Entry x:Name="passwordEntry" 
+                   Placeholder="Password"/>
+
+            <Entry x:Name="password2Entry" 
+                   Placeholder="Re-enter your password"/>
+
+            <Button Text="Register" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LazyBook.Views.CategoryView"
+             Title="{Binding Title}">
+        <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Items}"
+                HasUnevenRows="true"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame x:Name="Frame" BackgroundColor="White" HasShadow="true" Margin="5,1,5,1">
+                                <Grid Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image WidthRequest="15" HeightRequest="15" Margin="0" Source="logo_LazyBook.png" Grid.RowSpan="3" Grid.Row="0" Grid.Column="0"/>
+                                    <Label Text="{Binding Name}" LineBreakMode="TailTruncation" FontSize="16" TextColor="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                    <Label Text="{Binding Author}" VerticalOptions="Start" LineBreakMode="TailTruncation" FontSize="12" Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2"/>
+                                    <Grid Grid.Row="2" Grid.Column="1" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image WidthRequest="13" Source="{Binding Category}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="0" />
+                                        <Label Text="{Binding Category}"
+                                                   VerticalTextAlignment="Center"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"
+                                                   FontSize="13"
+                                                   TextColor="{StaticResource Secondary}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="1" />
+                                    </Grid>
+                                    <Label Text="{Binding Rate, StringFormat='{0:0.0###########}'}" HorizontalTextAlignment="Center" FontSize="13" Grid.Row="2" Grid.Column="2" VerticalTextAlignment="Center"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

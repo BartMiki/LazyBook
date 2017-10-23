@@ -2,9 +2,80 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LazyBook.ItemDetailPage"
-             Title="{Binding Title}">
-	<StackLayout Spacing="20" Padding="15">
-		<Label Text="{Binding Item.Text}" FontSize="Medium"/>
-        <Label Text="{Binding Item.Description}" FontSize="Small"/>
-    </StackLayout>
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Secondary}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="lbBanner.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16">
+                <Label FontSize="22" LineBreakMode="TailTruncation" Text="{Binding Item.Name}" TextColor="Black"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label FontSize="16" LineBreakMode="TailTruncation" Text="{Binding Item.Author}"
+                                                   Grid.Row="0" 
+                                                   Grid.Column="0" />
+                    <Image WidthRequest="16" Source="{Binding Item.Category}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="1" />
+                    <Label Text="{Binding Item.Category}"
+                                                   VerticalTextAlignment="Center"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"
+                                                   FontSize="16"
+                                                   TextColor="{StaticResource Secondary}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="2" />
+                </Grid>
+                <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" Color="Gray"/>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Image="thumbdown.png"  HorizontalOptions="Center" BackgroundColor="Transparent"
+                                                   Grid.Row="0" 
+                                                   Grid.Column="0" />
+
+                    <Label Text="{Binding Item.Rate, StringFormat='{0:0.0###########}'}" 
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"
+                                                   FontSize="26"
+                                                   TextColor="{StaticResource Secondary}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="1" />
+                    <Button Image="thumbup.png" HorizontalOptions="Center" BackgroundColor="Transparent"
+                                                   Grid.Row="0" 
+                                                   Grid.Column="2" />
+                </Grid>
+                <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" Color="Gray"/>
+                <Label FontSize="16" HeightRequest="100" LineBreakMode="TailTruncation" Text="{Binding Item.Summary}"/>
+
+                <Button Margin="0,10,0,0" Text="Read more" Clicked="ButtonReadMore_Clicked" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

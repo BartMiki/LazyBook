@@ -2,13 +2,18 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LazyBook.App">
   <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#ffffff</Color>
-            <Color x:Key="PrimaryDark">#1976D2</Color>
+            <Color x:Key="Primary">#191919</Color>
+            <Color x:Key="PrimaryDark">#000000</Color>
+            <Color x:Key="PrimaryLight">#3f3f3f</Color>
+            <Color x:Key="Secondary">#f2333a</Color>
+            <Color x:Key="SecondaryDark">#b70013</Color>
+            <Color x:Key="SecondaryLight">#ff6d65</Color>
             <Color x:Key="Accent">#96d1ff</Color>
             <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
             <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
+            <Color x:Key="BlackText">#000000</Color>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />

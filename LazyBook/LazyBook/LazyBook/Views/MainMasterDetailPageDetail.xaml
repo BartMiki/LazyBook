@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LazyBook.Views.MainMasterDetailPageDetail"
+	         xmlns:fab="clr-namespace:FAB.Forms;assembly=FAB.Forms"
+             Title="Detail">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="add_button.png" Clicked="AddButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Items}"
+                HasUnevenRows="true"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame x:Name="Frame" BackgroundColor="White" HasShadow="true" Margin="8">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Name}"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"
+                                                   FontSize="18"
+                                                   TextColor="{StaticResource BlackText}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="0" />
+                                    <Label Text="{Binding Author}"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                                   FontSize="13"
+                                                   VerticalTextAlignment="Center"
+                                                   Grid.Row="1" 
+                                                   Grid.Column="0" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand"  
+                                                   Grid.Row="0" 
+                                                   Grid.Column="1">
+                                        <Label Text="{Binding Summary}"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                                   FontSize="15"
+                                                   VerticalTextAlignment="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand"  
+                                                   Grid.Row="1" 
+                                                   Grid.Column="1">
+                                        <Label Text="{Binding Year}"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                                   FontSize="15"
+                                                   VerticalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+    </StackLayout>
+</ContentPage>

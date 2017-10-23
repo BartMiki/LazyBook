@@ -13,11 +13,7 @@ namespace LazyBook
         {
             InitializeComponent();
 
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
+            var item = new Item();
 
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
@@ -28,6 +24,11 @@ namespace LazyBook
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+        }
+
+        private void ButtonReadMore_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.ReaderPage(viewModel));
         }
     }
 }

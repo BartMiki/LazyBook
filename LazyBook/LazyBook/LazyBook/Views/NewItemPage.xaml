@@ -4,12 +4,28 @@
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="Save" Clicked="Save_Clicked" />
 	</ContentPage.ToolbarItems>
-	<ContentPage.Content>
-		<StackLayout Spacing="20" Padding="15">
-			<Label Text="Text" FontSize="Medium" />
-			<Entry Text="{Binding Item.Text}" FontSize="Small" />
-			<Label Text="Description" FontSize="Medium" />
-			<Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
-		</StackLayout>
-	</ContentPage.Content>
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame BackgroundColor="White">
+        <StackLayout>
+                <Entry x:Name="titleEntry"
+                       Placeholder="Add title"
+                       
+                       />
+                <Entry x:Name="authorEntry"
+                       Placeholder="Add author"/>
+                <Entry x:Name="publisherEntry"
+                       Placeholder="Add publisher"/>
+                <Entry x:Name="yearEntry"
+                       Placeholder="Add the year when the book was published"/>
+                <Label Text="Category" TextColor="{StaticResource Secondary}" FontAttributes="Bold"/>
+                <Picker x:Name="categoriesPicker"
+                        SelectedIndex="1"/>
+                <Label Text="Your essention of book" TextColor="{StaticResource Secondary}" FontAttributes="Bold"/>
+                <Editor VerticalOptions="FillAndExpand" x:Name="summaryEntry" 
+                   />
+        </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
